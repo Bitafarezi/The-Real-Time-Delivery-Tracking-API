@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Order
 from .serializers import OrderSerializer
@@ -7,6 +8,9 @@ from .serializers import OrderSerializer
 # With ModelViewSet you get GET, POST, PUT/PATCH, DELETE ready to use
 class OrderViewSet(ModelViewSet):
     # queryset = Order.objects.all()
+    
+    permission_classes = [IsAuthenticated]
+    serializer_class = OrderSerializer
     
     # filter orders based on the role a user has
     def get_queryset(self):
@@ -20,5 +24,5 @@ class OrderViewSet(ModelViewSet):
         
         return Order.objects.none()
     
-    serializer_class = OrderSerializer
+    
 

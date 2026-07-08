@@ -1,1 +1,8 @@
+# Virtual Environments
+*venv
 .venv
+
+
+# Databses
+*db.qlite
+db.sqlite3

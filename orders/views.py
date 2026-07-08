@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from .models import Order
+from .serializers import OrderSerializer
+
+
+# With ModelViewSet you get GET, POST, PUT/PATCH, DELETE ready to use
+class OrderViewSet(ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+

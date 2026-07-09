@@ -74,8 +74,9 @@ You can now access the interactive API browser at http://127.0.0.1:8000/api/orde
 
 
 ## 📄 Sample JSON Response
-When a authorized client hits a GET request on /api/order/1/, the dynamic serializer payload outputs as follows:
+When a authorized client hits a GET request on `/api/order/1/`, the dynamic serializer payload outputs as follows:
 
+```json
 {
     "id": 1,
     "customer": "John",
@@ -84,7 +85,7 @@ When a authorized client hits a GET request on /api/order/1/, the dynamic serial
     "delivery_duration": "30-45 minutes",
     "created_at": "2026-07-09T02:18:16Z"
 }
-
+```
 
 ## 🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -96,3 +97,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a **Pull Request**
+
+
+## 💻 Developed with ❤️ by Bita

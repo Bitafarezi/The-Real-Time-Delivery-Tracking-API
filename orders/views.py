@@ -16,13 +16,15 @@ class OrderViewSet(ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         
-        if user.profile.role == "customer":
-            return Order.objects.filter(customer=user)
+        profile = getattr(user, 'profile', None)
         
-        elif user.profile.role == "driver":
-            return Order.objects.filter(driver=user)
+        if profile:
+            if profile.role == "customer":
+                return Order.objects.filter(customer=user)
+            elif profile.role == "driver":
+                return Order.objects.filter(driver=user)
+            
+        if user.is_staff or user.is_superuser:
+            return Order.objects.all()
         
         return Order.objects.none()
-    
-    
-

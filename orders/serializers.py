@@ -22,6 +22,9 @@ class OrderSerializer(serializers.ModelSerializer):
     # we dont have this feild in database but we want to show to user
     delivery_duration = serializers.SerializerMethodField()
     
+    customer_profile = UserProfileSerializer(source='customer.profile', read_only=True)
+    driver_profile = UserProfileSerializer(source='driver.profile', read_only=True)
+    
     def get_delivery_duration(self, obj):
         if obj.status == 'Pending':
             return "45-60 minutes"

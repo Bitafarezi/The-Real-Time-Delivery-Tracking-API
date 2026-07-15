@@ -39,4 +39,10 @@ class OrderSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = [
+            'id', 'restaurant_name', 'address', 'status',
+            'created_at', 'updated_at', 'delivery_duration',
+            'customer', 'driver', 'customer_profile', 'driver_profile'
+        ]
+        
+        read_only_fields = ['customer', 'driver', 'status']

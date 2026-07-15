@@ -11,9 +11,10 @@ class UserSerializer(serializers.ModelSerializer):
         
         
 class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)   # Shows users's info instead of numeric ID
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ['user', 'role', 'phone_number', 'address']
 
 
 class OrderSerializer(serializers.ModelSerializer):

@@ -86,7 +86,7 @@ class OrderViewSet(ModelViewSet):
             )
 
         # Complete the delivery
-        order.status = 'Delivered'  # Matching your STATUS_CHOICES
+        order.status = 'Delivered'  # Matching STATUS_CHOICES
         order.save()
 
         serializer = self.get_serializer(order)

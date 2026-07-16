@@ -131,3 +131,9 @@ async function updateOrderStatus(orderId, action) {
         alert('Network error, please try again.');
     }
 }
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('username-display').innerText = "Active Session User";
+    loadOrders();
+});

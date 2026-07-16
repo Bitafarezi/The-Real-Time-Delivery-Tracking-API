@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 import orders
 from orders import urls
+from orders.views import orders_dashboard_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(orders.urls)),
+    path('dashboard/', orders_dashboard_view, name='orders-dashboard'),
 ]

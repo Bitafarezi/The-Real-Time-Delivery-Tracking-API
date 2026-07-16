@@ -1,5 +1,7 @@
 // static/orders/js/orders.js
 
+const BASE_URL = '/api/order/';
+
 // Function to get Django's CSRF Token for safe AJAX requests
 function getCookie(name) {
     let cookieValue = null;

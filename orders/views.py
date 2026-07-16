@@ -3,9 +3,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status as http_status
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Order
 from .serializers import OrderSerializer
+
+
+
+@login_required
+def orders_dashboard_view(request):
+    return render(request, 'orders_list.html')
 
 
 # With ModelViewSet you get GET, POST, PUT/PATCH, DELETE ready to use

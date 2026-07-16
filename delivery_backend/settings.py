@@ -121,7 +121,7 @@ STATIC_URL = 'static/'
 
 # Path of our static directory
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "orders" /"static",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"

@@ -95,7 +95,7 @@ function renderOrders(orders) {
                     ${order.customer_profile ? `
                     <div class="flex justify-between text-xs">
                         <span class="text-gray-400">Customer:</span>
-                        <span class="font-semibold text-gray-700">${order.customer_profile.user.full_name} (${order.customer_profile.phone_number})</span>
+                        <span class="font-semibold text-gray-700">${order.customer_profile.user.username} (${order.customer_profile.phone_number})</span>
                     </div>
                     ` : ''}
                 </div>

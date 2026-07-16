@@ -137,5 +137,8 @@ async function updateOrderStatus(orderId, action) {
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('username-display').innerText = "Active Session User";
+
     loadOrders();
+
+    setInterval(loadOrders, 5000);
 });

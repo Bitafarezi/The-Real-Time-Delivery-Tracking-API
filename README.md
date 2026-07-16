@@ -6,12 +6,16 @@ A powerful, secure, and scalable RESTful API designed for delivery and courier t
 
 ## ✨ Key Features
 
-*   **Role-Based Access Control (RBAC):** Leverages DRF's advanced `Permissions` system to ensure secure data boundaries.
+*   **Role-Based Access Control (RBAC):** Leverages DRF's advanced `Permissions` system to ensure secure data boundaries for Customers, Drivers, and Managers.
 *   **Dynamic Querysets:** Automatically filters orders based on the authenticated user's role:
-    *   **Customer:** Can only view and track orders they have personally placed.
-    *   **Driver:** Can only view and manage orders specifically assigned to them.
+    *   **Customer:** Can only view, track, and create orders they have personally placed.
+    *   **Driver:** Can only view and manage orders specifically assigned to them or pending in the system.
 *   **On-the-Fly Computed Fields:** Uses `SerializerMethodField` to dynamically calculate and return the estimated arrival time (`delivery_duration`) based on the order's status without bloating the database.
-*   **Modular Architecture:** Implements `ModelViewSet` and `SimpleRouter` to automatically generate clean, standard CRUD endpoints.
+*   **Real-time Dashboard UI:** A beautiful, responsive frontend built with Tailwind CSS, supporting:
+    *   **Order Creation UI:** A sleek, dedicated sidebar form allowing customers to place orders instantly.
+    *   **Real-time Polling:** Seamlessly updates the driver dashboard every 5 seconds without manual page refreshes.
+    *   **Custom Notifications:** Interactive toast notification system (success, error, info) instead of standard browser alerts.
+*   **Modular Architecture:** Implements `ModelViewSet` and `DefaultRouter` to automatically generate clean, standard CRUD endpoints.
 
 ---
 
@@ -20,6 +24,7 @@ A powerful, secure, and scalable RESTful API designed for delivery and courier t
 *   **Backend:** Python 3.14+
 *   **Framework:** Django 6.0+
 *   **API Toolkit:** Django REST Framework (DRF) 3.17+
+*   **Frontend:** Vanilla JS, HTML5, Tailwind CSS (via CDN)
 *   **Database:** SQLite (Easily swappable to PostgreSQL/MySQL)
 
 ---
@@ -37,7 +42,7 @@ cd Delivery-Tracking-API
 ### 2. Set Up a Virtual Environment
 ``` python 
 python3 -m venv rest-venv
-source rest-venv/bin/activate
+source rest-venv/bin/activate   # On Windows: rest-venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
@@ -79,11 +84,40 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
 ```json
 {
     "id": 1,
-    "customer": "John",
-    "driver": "Dave",
-    "status": "Preparing",
-    "delivery_duration": "30-45 minutes",
-    "created_at": "2026-07-09T02:18:16Z"
+    "restaurant_name": "Avli",
+    "address": "Andarzgoo street",
+    "status": "Pending",
+    "created_at": "2026-07-15T23:11:26.026831Z",
+    "updated_at": "2026-07-15T23:11:26.026870Z",
+    "delivery_duration": "45-60 minutes",
+    "customer": 2,
+    "driver": 1,
+    "customer_profile": {
+        "id": 2,
+        "user": {
+            "id": 2,
+            "username": "raya",
+            "first_name": "",
+            "last_name": "",
+            "full_name": "Raya"
+        },
+        "role": "customer",
+        "phone_number": "+9891280434",
+        "address": "Niki street"
+    },
+    "driver_profile": {
+        "id": 1,
+        "user": {
+            "id": 1,
+            "username": "bita",
+            "first_name": "",
+            "last_name": "",
+            "full_name": "Bita"
+        },
+        "role": "driver",
+        "phone_number": "+9891234567",
+        "address": "Empire State"
+    }
 }
 ```
 

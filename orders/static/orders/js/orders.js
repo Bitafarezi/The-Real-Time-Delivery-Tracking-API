@@ -104,3 +104,30 @@ function renderOrders(orders) {
         container.appendChild(card);
     });
 }
+
+
+// 3. Update order status using AJAX (POST request to accept/deliver)
+async function updateOrderStatus(orderId, action) {
+    const url = `${BASE_URL}${orderId}/${action}/`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert(result.message);
+            loadOrders(); // Real-time reload without refreshing the browser!
+        } else {
+            alert(`Error: ${result.error || 'Something went wrong'}`);
+        }
+    } catch (error) {
+        console.error(error);
+        alert('Network error, please try again.');
+    }
+}

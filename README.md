@@ -1,6 +1,6 @@
 # 🚴‍♂️ Delivery Tracking API
 
-A powerful, secure, and scalable RESTful API designed for delivery and courier tracking management systems. Built with **Django** and **Django REST Framework (DRF)**, this project features robust role-based access control (RBAC) and real-time order lifecycle filtering.
+A powerful, secure, and scalable RESTful API coupled with a sleek, real-time frontend dashboard designed for delivery and courier tracking management systems. Built with **Django**, **Django REST Framework (DRF)**, and **Tailwind CSS**, this project features robust role-based access control (RBAC), automatic live-polling, real-time order lifecycle filtering, and interactive API documentation powered by **drf-yasg (Swagger & ReDoc)**.
 
 ---
 
@@ -11,6 +11,7 @@ A powerful, secure, and scalable RESTful API designed for delivery and courier t
     *   **Customer:** Can only view, track, and create orders they have personally placed.
     *   **Driver:** Can only view and manage orders specifically assigned to them or pending in the system.
 *   **On-the-Fly Computed Fields:** Uses `SerializerMethodField` to dynamically calculate and return the estimated arrival time (`delivery_duration`) based on the order's status without bloating the database.
+*   **Interactive API Documentation:** Full OpenAPI schema integration using `drf-yasg` providing interactive **Swagger UI** and **ReDoc** endpoints for easy API testing.
 *   **Real-time Dashboard UI:** A beautiful, responsive frontend built with Tailwind CSS, supporting:
     *   **Order Creation UI:** A sleek, dedicated sidebar form allowing customers to place orders instantly.
     *   **Real-time Polling:** Seamlessly updates the driver dashboard every 5 seconds without manual page refreshes.
@@ -24,6 +25,7 @@ A powerful, secure, and scalable RESTful API designed for delivery and courier t
 *   **Backend:** Python 3.14+
 *   **Framework:** Django 6.0+
 *   **API Toolkit:** Django REST Framework (DRF) 3.17+
+*   **API Docs:** drf-yasg 1.21+ (Swagger / ReDoc)
 *   **Frontend:** Vanilla JS, HTML5, Tailwind CSS (via CDN)
 *   **Database:** SQLite (Easily swappable to PostgreSQL/MySQL)
 
@@ -47,7 +49,7 @@ source rest-venv/bin/activate   # On Windows: rest-venv\Scripts\activate
 
 ### 3. Install Dependencies
 ``` python
-pip install django djangorestframework django-filter sqlparse markdown
+pip install -r requirements.txt
 ```
 
 ### 4.Run Database Migrations
@@ -66,7 +68,18 @@ python3 manage.py createsuperuser
 python manage.py runserver
 ```
 
-You can now access the interactive API browser at http://127.0.0.1:8000/api/order/.
+### 7. Access the Application
+
+Frontend Dashboard: http://127.0.0.1:8000/dashboard/
+
+Interactive API Browser: http://127.0.0.1:8000/api/order/
+
+Swagger API Docs: http://127.0.0.1:8000/swagger/
+
+ReDoc API Docs: http://127.0.0.1:8000/redoc/
+
+Django Admin Panel: http://127.0.0.1:8000/admin/
+
 
 ## 🗺️ API Endpoints
 | Method | Endpoint | Description |
@@ -76,6 +89,8 @@ You can now access the interactive API browser at http://127.0.0.1:8000/api/orde
 | **GET** | `/api/order/{id}/` | Retrieve details of a specific order |
 | **PUT/PATCH** | `/api/order/{id}/` | Update order details or shift its status |
 | **DELETE** | `/api/order/{id}/` | Delete an order entry |
+| **POST** | `/api/order/{id}/accept/` | Action for a driver to accept a pending order |
+| **POST** | `/api/order/{id}/deliver/` | Action for a driver to mark an active order as delivered |
 
 
 ## 📄 Sample JSON Response

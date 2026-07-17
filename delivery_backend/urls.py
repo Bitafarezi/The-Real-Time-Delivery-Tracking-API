@@ -19,9 +19,33 @@ from django.urls import path, include
 import orders
 from orders import urls
 from orders.views import orders_dashboard_view
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+
+# 1. Define API Metadata
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Your API Title",
+      default_version='v1',
+      description="API documentation for your project",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
+
+# 2. Add Routes
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(orders.urls)),
     path('dashboard/', orders_dashboard_view, name='orders-dashboard'),
+    # Swagger UI documentation route
+    path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    # ReDoc documentation route
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

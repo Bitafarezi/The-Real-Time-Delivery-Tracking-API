@@ -4,3 +4,9 @@ django-filter==25.2
 djangorestframework==3.17.1
 Markdown==3.10.2
 sqlparse==0.5.5
+drf-yasg==1.21.15
+inflection==0.5.1
+packaging==26.2
+pytz==2026.2
+PyYAML==6.0.3
+uritemplate==4.2.0

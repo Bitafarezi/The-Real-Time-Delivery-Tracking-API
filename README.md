@@ -99,8 +99,8 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
 ```json
 {
     "id": 1,
-    "restaurant_name": "Avli",
-    "address": "Andarzgoo street",
+    "restaurant_name": "...",
+    "address": "... street",
     "status": "Pending",
     "created_at": "2026-07-15T23:11:26.026831Z",
     "updated_at": "2026-07-15T23:11:26.026870Z",
@@ -117,8 +117,8 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
             "full_name": "John Doe"
         },
         "role": "customer",
-        "phone_number": "+9891280434",
-        "address": "Niki street"
+        "phone_number": "+123456789",
+        "address": "... street"
     },
     "driver_profile": {
         "id": 1,
@@ -130,8 +130,8 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
             "full_name": "Rumi Madson"
         },
         "role": "driver",
-        "phone_number": "+9891234567",
-        "address": "Empire State"
+        "phone_number": "+123456789",
+        "address": "..."
     }
 }
 ```

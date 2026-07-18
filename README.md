@@ -111,10 +111,10 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
         "id": 2,
         "user": {
             "id": 2,
-            "username": "...",
+            "username": "john123",
             "first_name": "",
             "last_name": "",
-            "full_name": "..."
+            "full_name": "John Doe"
         },
         "role": "customer",
         "phone_number": "+123456789",
@@ -124,10 +124,10 @@ When a authorized client hits a GET request on `/api/order/1/`, the dynamic seri
         "id": 1,
         "user": {
             "id": 1,
-            "username": "...",
+            "username": "rumi743",
             "first_name": "",
             "last_name": "",
-            "full_name": "..."
+            "full_name": "Rumi Madson"
         },
         "role": "driver",
         "phone_number": "+123456789",
